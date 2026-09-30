@@ -39,7 +39,9 @@ While the side panel is open, the Extension looks at the address of your **activ
 
 **Where it goes.** Those values are written into **empty** input fields on the tab you are looking at. They go from your JobAI account into the form in front of you and nowhere else.
 
-**Limits.** The Extension only touches the active tab when you click. It never overwrites a field that already has a value, never fills password, payment, file-upload, checkbox, radio or drop-down fields, leaves sensitive questions (for example ID number, date of birth, gender or expected salary) for you, and **never submits a form**. You always review and submit it yourself.
+**Your résumé.** If you have chosen and authorised a specific résumé version for that application on `jobai.hk`, the Extension downloads **only that version** and places it in the page's résumé upload field when you click fill. It checks the file against the version's fingerprint first. It never picks a résumé on its own, never uses the newest one by default, and never touches other upload fields such as cover letters, certificates or photos. Without your authorisation, nothing is uploaded.
+
+**Limits.** The Extension only touches the active tab when you click. It never overwrites a field or upload that already has a value, never fills password, payment, checkbox, radio or drop-down fields, leaves sensitive questions (for example ID number, date of birth, gender or expected salary) for you, and **never submits a form**. You always review and submit it yourself.
 
 ### 5. Recording a confirmation page
 
@@ -51,6 +53,7 @@ After **you** have submitted an application, you can click **"我已提交，記
 |---|---|---|
 | Job title, company, location, salary, description, page URL | Save the listing to your account | Your JobAI account (`jobai.hk`) |
 | Your name, email, phone, job title, employer, skills | Fill an application form you opened | The form on your active tab only |
+| The résumé version you authorised for that application | Put it in the form's résumé upload field | The form on your active tab only |
 | Confirmation page text (up to 1,000 characters) and address | Record that you submitted an application | Your JobAI account (`jobai.hk`) |
 | Device credential | Authenticate this browser | `jobai.hk` (Authorization header); stored locally |
 | Active tab address | Show the current site and match your queued applications | Not sent; checked inside your browser |
@@ -99,7 +102,9 @@ Questions or a data request: contact us at https://jobai.hk/contact.
 
 **去邊。** 呢啲值會填入你眼前嗰個分頁入面**仲係空白**嘅輸入欄。資料由你嘅 JobAI 帳戶去到你面前嗰張表，唔會去第二度。
 
-**限制。** 只會掂你撳嗰陣個當前分頁；已經有內容嘅欄位唔會覆蓋；密碼、付款、檔案上載、剔選格、單選、下拉選單一律唔掂；敏感問題（例如身分證號碼、出生日期、性別、期望薪金）留返畀你自己填；**永遠唔會幫你㩒交表**，一定係你自己睇完再交。
+**你嘅履歷。** 如果你喺 `jobai.hk` 為嗰份申請揀咗兼授權咗一個履歷版本，你撳填表嗰陣，本擴充功能會**淨係**下載嗰個版本，放入申請頁嘅履歷上載欄。放之前會先核對檔案指紋。佢唔會自己揀履歷、唔會預設用最新版本，亦唔會掂求職信、證書、相片等其他上載欄。你冇授權就乜都唔會上載。
+
+**限制。** 只會掂你撳嗰陣個當前分頁；已經有內容嘅欄位同上載欄唔會覆蓋；密碼、付款、剔選格、單選、下拉選單一律唔掂；敏感問題（例如身分證號碼、出生日期、性別、期望薪金）留返畀你自己填；**永遠唔會幫你㩒交表**，一定係你自己睇完再交。
 
 ### 5. 記錄確認頁
 
@@ -111,6 +116,7 @@ Questions or a data request: contact us at https://jobai.hk/contact.
 |---|---|---|
 | 職位名、公司、地點、薪酬、描述、網址 | 將職位存入你帳戶 | 你嘅 JobAI 帳戶（`jobai.hk`） |
 | 你嘅姓名、電郵、電話、職位、公司、技能 | 填你自己打開嗰張申請表 | 只限你當前分頁嗰張表 |
+| 你為嗰份申請授權嘅履歷版本 | 放入申請表嘅履歷上載欄 | 只限你當前分頁嗰張表 |
 | 確認頁文字（最多 1,000 字元）同網址 | 記錄你交咗申請 | 你嘅 JobAI 帳戶（`jobai.hk`） |
 | 裝置憑證 | 認證呢個瀏覽器 | `jobai.hk`（Authorization 標頭）；本機儲存 |
 | 當前分頁網址 | 顯示你喺邊個網站、對返你排咗嘅投遞工作 | 唔會送出；只喺你瀏覽器入面比對 |
