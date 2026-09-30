@@ -1,106 +1,126 @@
 ---
-title: JobAI - Save Job Listings — Privacy Policy
+title: JobAI - Jobby 求職助手 — Privacy Policy
 description: Privacy policy for the JobAI Chrome extension
 ---
 
-# JobAI – Save Job Listings — Privacy Policy / 私隱政策
+# JobAI – Jobby 求職助手 — Privacy Policy / 私隱政策
 
-_Last updated: 2026-08-07 · Extension version 2.1.2_
+_Last updated: 2026-09-30 · Extension version 3.0.0_
 
 ## English
 
-**JobAI – Save Job Listings** ("the Extension") does one thing: it moves job data between the job page you are looking at and **your own JobAI account** (`job-ai-leap.base44.app`), so you do not have to retype it.
+**JobAI – Jobby 求職助手** ("the Extension") is a side panel that moves data between the job page you are looking at and **your own JobAI account** (`jobai.hk`), so you do not have to retype it.
 
 There is no JobAI-operated analytics, no advertising, and no third-party data sharing of any kind.
 
 ---
 
-### 1. Saving a job listing
+### 1. Connecting to your JobAI account (pairing)
 
-**What is read.** When you are on a job detail page on `linkedin.com`, `jobsdb.com`, `ctgoodjobs.com` or `ctgoodjobs.hk`, and **only at the moment you click "Save to JobAI"**, the Extension reads the job details visible on that page: job title, company, location, salary, job description, and the page URL.
+The Extension never sees your JobAI password or your JobAI login session. Instead, you get a one-time **pairing code** on `jobai.hk` ("Connect device") and type it into the side panel. The Extension exchanges that code for a **device credential** that is stored locally in your browser (`chrome.storage.local`).
 
-**Where it goes.** Those details are sent directly to the JobAI backend (`app.base44.com`) and stored as a job record **under your own JobAI account**, exactly as if you had typed it into the JobAI app yourself. Nothing is sent anywhere else.
+That credential is not your login. It can only do three things: read the profile fields used for form filling, save a job to your account, and handle the application tasks you queued. It expires on its own and you can revoke it at any time on `jobai.hk`; "Unpair on this computer" in the side panel deletes the local copy. It is only ever sent to `jobai.hk` as the standard `Authorization` header.
 
-**What is not read.** The Extension does not read pages on any other website, does not record which pages you visit, and does not run in the background collecting anything.
+### 2. Knowing which page you are on
 
-### 2. Autofilling an application form
+While the side panel is open, the Extension looks at the address of your **active tab** so it can show which site you are on and whether one of your queued applications belongs to that page. This check happens inside your browser. The address is not recorded and is not sent anywhere, except in the two cases below where you click a button.
 
-**What is read.** When you click **"自動填申請表" / "Autofill application form"** in the Extension's popup — and only then — the Extension fetches **your own** profile from your JobAI account: your name, email address, phone number, city/location, current job title, current employer, and skills.
+### 3. Saving a job listing
 
-**Where it goes.** Those values are written into **empty** input fields on the tab you are currently looking at, matched by the field's label, placeholder, name or id. The data goes from your JobAI account into the form in front of you and nowhere else — it is not sent to us or to any third party.
+**What is read.** On a job detail page on `linkedin.com`, `jobsdb.com`, `ctgoodjobs.com` or `ctgoodjobs.hk`, and **only when you click "Save to JobAI" / "存呢份工入 JobAI"**, the Extension reads the job details visible on that page: job title, company, location, salary, job description, and the page URL.
 
-**Limits.** The Extension only ever touches the one tab that is active when you click. It never fills a field that already has a value, never fills password, payment, file-upload, checkbox or radio fields, and **never submits a form** — you always review and submit it yourself.
+**Where it goes.** Those details are sent to your JobAI account on `jobai.hk` and stored as a job record **under your own account**. Nothing is sent anywhere else.
 
-### 3. Your JobAI login
+### 4. Filling an application form
 
-The Extension does not ask for your password and does not use any shared API key. A small script on `job-ai-leap.base44.app` reads the session token of the JobAI account **you are already signed in to**, and stores it locally in your browser (`chrome.storage.local`).
+**What is read.** When you click **"幫我填呢頁嘅申請表" / "Fill this application form"** — and only then — the Extension fetches **your own** profile fields from `jobai.hk`: name, email address, phone number, current job title, current employer and skills.
 
-That token is used for one purpose: to authenticate requests to your own JobAI backend as you. It never leaves your browser except as the standard `Authorization` header sent to `app.base44.com`.
+**Site access.** Before filling a site for the first time, Chrome asks you to allow the Extension on that site. You can remove that access at any time in Chrome's extension settings.
 
-### 4. Data we collect, and why
+**Where it goes.** Those values are written into **empty** input fields on the tab you are looking at. They go from your JobAI account into the form in front of you and nowhere else.
+
+**Limits.** The Extension only touches the active tab when you click. It never overwrites a field that already has a value, never fills password, payment, file-upload, checkbox, radio or drop-down fields, leaves sensitive questions (for example ID number, date of birth, gender or expected salary) for you, and **never submits a form**. You always review and submit it yourself.
+
+### 5. Recording a confirmation page
+
+After **you** have submitted an application, you can click **"我已提交，記錄確認頁" / "I've submitted, record the confirmation page"**. Only then does the Extension read the text of that confirmation page. If it finds a confirmation message (for example "Thank you for applying"), it sends up to 1,000 characters around that message, together with the page address, to your JobAI account as a record of that application. It is marked as your own device's observation, not as a verified result.
+
+### 6. Data we collect, and why
 
 | Data | Purpose | Sent to |
 |---|---|---|
-| Job title, company, location, salary, description, page URL | Save the listing to your account | Your JobAI account (`app.base44.com`) |
-| Your name, email, phone, city, job title, employer, skills | Fill an application form you opened | The form on your active tab only |
-| Your JobAI session token | Authenticate as you | `app.base44.com` (Authorization header); stored locally |
+| Job title, company, location, salary, description, page URL | Save the listing to your account | Your JobAI account (`jobai.hk`) |
+| Your name, email, phone, job title, employer, skills | Fill an application form you opened | The form on your active tab only |
+| Confirmation page text (up to 1,000 characters) and address | Record that you submitted an application | Your JobAI account (`jobai.hk`) |
+| Device credential | Authenticate this browser | `jobai.hk` (Authorization header); stored locally |
+| Active tab address | Show the current site and match your queued applications | Not sent; checked inside your browser |
 
 We do **not** collect health data, financial or payment data, personal communications, device location, browsing history, keystrokes, or mouse/scroll activity. We do **not** sell or transfer any of this data to third parties, and we do not use it for advertising, creditworthiness or lending.
 
-### 5. Retention and deletion
+### 7. Retention and deletion
 
-Saved jobs and your profile live in your JobAI account — delete them any time inside the JobAI app. The Extension itself stores only the session token on your device; uninstalling the Extension deletes it.
+Saved jobs, application records and your profile live in your JobAI account; delete them any time on `jobai.hk`. The Extension itself stores only the device credential on your computer; unpairing or uninstalling the Extension deletes it.
 
-### 6. Contact
+### 8. Contact
 
-Questions or a data request: contact us through the JobAI app at https://job-ai-leap.base44.app.
+Questions or a data request: contact us at https://jobai.hk/contact.
 
 ---
 
 ## 中文
 
-**JobAI – Save Job Listings**（「本擴充功能」）淨係做一件事：喺你眼前嗰個職位頁同**你自己嘅 JobAI 帳戶**（`job-ai-leap.base44.app`）之間搬資料，等你唔使重複打字。
+**JobAI – Jobby 求職助手**（「本擴充功能」）係一個側邊欄，喺你眼前嗰個職位頁同**你自己嘅 JobAI 帳戶**（`jobai.hk`）之間搬資料，等你唔使重複打字。
 
 冇任何分析追蹤、冇廣告、亦冇任何形式嘅第三方資料分享。
 
 ---
 
-### 1. 儲存職位
+### 1. 連接你嘅 JobAI 帳戶（配對）
 
-**讀咩。** 當你喺 `linkedin.com`、`jobsdb.com`、`ctgoodjobs.com` 或 `ctgoodjobs.hk` 嘅職位詳情頁，**而且淨係喺你撳「Save to JobAI」嗰一刻**，本擴充功能會讀取該頁可見嘅職位資料：職位名、公司、地點、薪酬、職位描述、網址。
+本擴充功能永遠唔會見到你嘅 JobAI 密碼或者登入狀態。你喺 `jobai.hk`「連接電腦」攞一個一次性**配對碼**，打入側邊欄；本擴充功能用佢換一個**裝置憑證**，存喺你瀏覽器本機（`chrome.storage.local`）。
 
-**去邊。** 呢啲資料直接送去 JobAI 後端（`app.base44.com`），以**你自己嘅帳戶**存低，同你喺 JobAI app 入面自己打一次完全一樣。唔會送去其他任何地方。
+呢個憑證唔係你嘅登入，只做得到三件事：讀填表用嘅個人資料、將職位存入你帳戶、處理你自己排嘅投遞工作。佢會自己過期，你亦可以隨時喺 `jobai.hk` 撤銷；側邊欄嘅「喺呢部電腦取消配對」會刪走本機副本。佢只會作為標準 `Authorization` 標頭送去 `jobai.hk`。
 
-**唔會讀咩。** 唔會讀其他網站嘅頁面、唔會記錄你去過邊啲網頁、亦唔會喺背景不斷收集任何嘢。
+### 2. 知道你喺邊一頁
 
-### 2. 自動填申請表
+側邊欄打開嗰陣，本擴充功能會睇你**當前分頁**嘅網址，用嚟顯示你喺邊個網站，同埋對返你排咗嘅投遞工作係咪屬於呢一頁。呢個比對喺你瀏覽器入面做，網址唔會被記錄，亦唔會送去任何地方，除咗下面兩個要你親手撳掣嘅情況。
 
-**讀咩。** 當你喺 extension 彈窗撳**「自動填申請表」**——亦淨係嗰一刻——本擴充功能會由你自己嘅 JobAI 帳戶攞返**你自己嘅**檔案：姓名、電郵、電話、城市／地區、現職職位、現職公司、技能。
+### 3. 儲存職位
 
-**去邊。** 呢啲值會填入你**當前分頁**嗰個表格入面**仲係空白**嘅輸入欄（按欄位嘅 label、placeholder、name 或 id 配對）。資料由你嘅 JobAI 帳戶去到你面前嗰張表，唔會去第二度——唔會送俾我哋，亦唔會送俾任何第三方。
+**讀咩。** 喺 `linkedin.com`、`jobsdb.com`、`ctgoodjobs.com` 或 `ctgoodjobs.hk` 嘅職位詳情頁，**淨係喺你撳「Save to JobAI」或者「存呢份工入 JobAI」嗰一刻**，本擴充功能會讀取該頁可見嘅職位資料：職位名、公司、地點、薪酬、職位描述、網址。
 
-**限制。** 只會掂你撳嗰陣個 active 分頁；已經有內容嘅欄位唔會覆蓋；密碼、付款、檔案上載、checkbox、radio 一律唔掂；**永遠唔會幫你㩒交表**——一定係你自己睇完再交。
+**去邊。** 呢啲資料送去你喺 `jobai.hk` 嘅 JobAI 帳戶，以**你自己嘅帳戶**存低。唔會送去其他任何地方。
 
-### 3. 你嘅 JobAI 登入
+### 4. 幫你填申請表
 
-本擴充功能唔會問你攞密碼，亦冇用任何共用 API key。喺 `job-ai-leap.base44.app` 上有一段小 script，讀取**你已經登入緊**嗰個 JobAI 帳戶嘅 session token，存喺你瀏覽器本機（`chrome.storage.local`）。
+**讀咩。** 當你撳**「幫我填呢頁嘅申請表」**，亦淨係嗰一刻，本擴充功能會由 `jobai.hk` 攞返**你自己嘅**資料：姓名、電郵、電話、現職職位、現職公司、技能。
 
-呢個 token 只有一個用途：以你嘅身分向你自己嘅 JobAI 後端認證。除咗作為標準 `Authorization` 標頭送去 `app.base44.com`，唔會離開你部瀏覽器。
+**網站權限。** 第一次喺某個網站填表之前，Chrome 會問你准唔准本擴充功能用嗰個網站。你隨時可以喺 Chrome 擴充功能設定度收返。
 
-### 4. 我哋收集乜、點解
+**去邊。** 呢啲值會填入你眼前嗰個分頁入面**仲係空白**嘅輸入欄。資料由你嘅 JobAI 帳戶去到你面前嗰張表，唔會去第二度。
+
+**限制。** 只會掂你撳嗰陣個當前分頁；已經有內容嘅欄位唔會覆蓋；密碼、付款、檔案上載、剔選格、單選、下拉選單一律唔掂；敏感問題（例如身分證號碼、出生日期、性別、期望薪金）留返畀你自己填；**永遠唔會幫你㩒交表**，一定係你自己睇完再交。
+
+### 5. 記錄確認頁
+
+**你自己**交咗申請之後，可以撳**「我已提交，記錄確認頁」**。淨係嗰一刻，本擴充功能先會讀嗰個確認頁嘅文字。如果搵到確認字眼（例如「Thank you for applying」），會將嗰段字前後最多 1,000 個字元，連同頁面網址，送去你嘅 JobAI 帳戶做呢份申請嘅紀錄。紀錄會標明係你部機觀察到，唔係經平台核實嘅結果。
+
+### 6. 我哋收集乜、點解
 
 | 資料 | 用途 | 送去邊 |
 |---|---|---|
-| 職位名、公司、地點、薪酬、描述、網址 | 將職位存入你帳戶 | 你嘅 JobAI 帳戶（`app.base44.com`） |
-| 你嘅姓名、電郵、電話、城市、職位、公司、技能 | 填你自己打開嗰張申請表 | 只限你當前分頁嗰張表 |
-| 你嘅 JobAI session token | 以你身分認證 | `app.base44.com`（Authorization 標頭）；本機儲存 |
+| 職位名、公司、地點、薪酬、描述、網址 | 將職位存入你帳戶 | 你嘅 JobAI 帳戶（`jobai.hk`） |
+| 你嘅姓名、電郵、電話、職位、公司、技能 | 填你自己打開嗰張申請表 | 只限你當前分頁嗰張表 |
+| 確認頁文字（最多 1,000 字元）同網址 | 記錄你交咗申請 | 你嘅 JobAI 帳戶（`jobai.hk`） |
+| 裝置憑證 | 認證呢個瀏覽器 | `jobai.hk`（Authorization 標頭）；本機儲存 |
+| 當前分頁網址 | 顯示你喺邊個網站、對返你排咗嘅投遞工作 | 唔會送出；只喺你瀏覽器入面比對 |
 
 我哋**唔會**收集健康資料、財務或付款資料、私人通訊、裝置位置、瀏覽紀錄、按鍵紀錄或滑鼠／捲動行為。我哋**唔會**將任何資料出售或轉交第三方，亦唔會用嚟做廣告、信用評估或借貸用途。
 
-### 5. 保留同刪除
+### 7. 保留同刪除
 
-已儲存嘅職位同你嘅個人檔案都喺你嘅 JobAI 帳戶入面，隨時喺 JobAI app 自己刪除。本擴充功能本身只喺你部機存住個 session token；移除 extension 就會一併刪走。
+已儲存嘅職位、申請紀錄同你嘅個人檔案都喺你嘅 JobAI 帳戶入面，隨時喺 `jobai.hk` 自己刪除。本擴充功能本身只喺你部機存住個裝置憑證；取消配對或者移除本擴充功能就會一併刪走。
 
-### 6. 聯絡
+### 8. 聯絡
 
-查詢或資料要求：透過 JobAI app 聯絡我哋 https://job-ai-leap.base44.app。
+查詢或資料要求：https://jobai.hk/contact
