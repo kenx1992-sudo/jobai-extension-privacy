@@ -1,7 +1,7 @@
-# JobAI – Save Job Listings — Privacy Policy
+# JobAI – Jobby 求職助手 — Privacy Policy (retired mirror)
 
-Public hosting for the privacy policy of the **JobAI - Save Job Listings** Chrome extension.
+This GitHub Pages site used to mirror the Chrome extension privacy policy. It is retired and now only redirects to the current policy:
 
-Live page: https://kenx1992-sudo.github.io/jobai-extension-privacy/
+https://jobai.hk/chrome-extension-privacy.html
 
-Source of truth is `PRIVACY.md` in the extension repo; this repo mirrors it as `index.md`.
+The extension policy source is `PRIVACY.md` in `kenx1992-sudo/jobai-extension`; the website policy is https://jobai.hk/privacy. Do not edit policy text here.
